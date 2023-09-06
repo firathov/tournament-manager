@@ -1,0 +1,25 @@
+{% extends '/base.html.twig' %}
+{% block title %}New Team{% endblock %}
+{% block body %}
+    <div class="card mt-4">
+        <h1 style="margin-left: 16px">Create New Team</h1>
+        <div class="card-body">
+            <div class="btn-group mb-2" role="group">
+                <a href="{{ path('team_index') }}">
+                    <button type="button" class="btn btn-secondary">Назад</button>
+                </a>
+            </div>
+            {{ form_start(form) }}
+            <div class="row mb-2">
+                <div class="col-2">
+                    <strong><label>Name:</label></strong>
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control '  ~ (form.name.vars.valid ? '' : 'is-invalid') }}) }}
+                    <div id="{{ form.name.vars.id }}" class="invalid-feedback">
+                        {{ form_errors(form.name) }}
+                    </div>
+                </div>
+            </div>
+            <button type='submit' class='btn btn-primary'>Добавить</button>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{#<form method="post" action="{{ path('team_delete', {'id': team.id}) }}" onsubmit="return confirm({{ 'team.confirm_delete'|trans }});">#}
+{#    <input type="hidden" name="_method" value="DELETE">#}
+{#    <button type="submit" class="btn btn-danger">Delete</button>#}
+{#</form>#}
+
+<form method="POST" action="{{ path('team_delete', {'id': team.id}) }}" onsubmit="return confirm('{{ 'team.confirm_delete'|trans }}');">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
