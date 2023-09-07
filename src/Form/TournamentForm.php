@@ -2,16 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\Team;
-use App\Entity\Tournament;
+use App\Entity\{Team, Tournament};
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\{AbstractType, FormBuilderInterface};
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\{Length, NotBlank};
 
 class TournamentForm extends AbstractType
 {
@@ -39,8 +35,9 @@ class TournamentForm extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
-            ]);
+            ])
         ;
+
     }
 
     /**

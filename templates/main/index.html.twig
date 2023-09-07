@@ -4,6 +4,16 @@
 {% block body %}
     <div class="card mt-4">
         <div class="card-body">
+            <div class="btn-group mb-2" role="group">
+                <a href="{{ path('team_index') }}">
+                    <button type="button" class="btn btn-success">Team Section</button>
+                </a>
+            </div>
+            <div class="btn-group mb-2" role="group">
+                <a href="{{ path('tournament_index') }}">
+                    <button type="button" class="btn btn-primary">Tournament Section</button>
+                </a>
+            </div>
             <table class='table mt-8 table-striped'>
                 <thead>
                 <tr>

@@ -2,19 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Team;
 use App\Entity\Tournament;
 use App\Form\TournamentForm;
-use App\Repository\TeamRepository;
-use App\Repository\TournamentRepository;
+use App\Repository\{TeamRepository, TournamentRepository};
 use App\Service\Tournament\TournamentService;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Exception;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route(path: '/tournaments')]
@@ -81,7 +78,6 @@ class TournamentController extends AbstractController
     public function show(#[MapEntity(mapping: ['slug' => 'id'])] Tournament $tournament, TournamentService $tournamentService): Response
     {
         $matches = $tournamentService->generateMatches($tournament);
-
 
         return $this->render('tournament/show.html.twig', [
             'tournament' => $tournament,
