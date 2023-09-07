@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tournaments{% endblock %}
+
+{% block body %}
+    <div class="card mt-4">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <h1>Tournaments List</h1>
+                <div>
+                    <a class='btn btn-success' style="margin-left: 10px;" href='{{ path('tournament_new') }}'>Добавить</a>
+                </div>
+            </div>
+            <table class='table mt-8 table-striped'>
+                <thead>
+                <tr>
+                    <th scope='col'>List of the Tournaments</th>
+                    <th scope='col'>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for tournament in tournaments %}
+                    <tr>
+                        <td>{{ tournament.name }}</td>
+                        <td class="d-flex nowrap-td flexStart">
+                            {{ include('/tournament/_delete_form.html.twig') }}
+                            <a class='btn btn-info' style="margin-left: 5px" href='{{ path('tournament_show', {'slug': tournament.id}) }}'>Details</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
