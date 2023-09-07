@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}Football Manager{% endblock %}
+
+{% block body %}
+    <div class="card mt-4">
+        <div class="card-body">
+            <table class='table mt-8 table-striped'>
+                <thead>
+                <tr>
+                    <th scope='col'>List of the Tournaments</th>
+                    <th scope='col'>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for tournament in tournaments %}
+                    <tr>
+                        <td>{{ tournament.name }}</td>
+                        <td>
+                            <a class='btn btn-info' style="margin-left: 5px" href='{{ path('tournament_show', {'slug': tournament.id}) }}'>Details</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
