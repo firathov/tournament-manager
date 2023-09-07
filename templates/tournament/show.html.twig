@@ -4,6 +4,11 @@
     <div class="card mt-4">
         <div class="card-body">
             <h1>{{ tournament.name }}</h1>
+            <div class="btn-group mb-2" role="group">
+                <a href="{{ path('tournament_index') }}">
+                    <button type="button" class="btn btn-secondary">Back</button>
+                </a>
+            </div>
 
             {% for day, matchesOfDay in matches %}
                 <h2>Day {{ day }}:</h2>

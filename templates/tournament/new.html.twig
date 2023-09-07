@@ -1,5 +1,13 @@
 {% extends '/base.html.twig' %}
 {% block title %}New Tournament{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .form-control label {
+            margin: 0 10px 0 3px;
+        }
+    </style>
+{% endblock %}
 {% block body %}
     <div class="card mt-4">
         <h1 style="margin-left: 16px">Create New Tournament</h1>
@@ -16,6 +24,13 @@
                     {{ form_widget(form.name, {'attr': {'class': 'form-control '  ~ (form.name.vars.valid ? '' : 'is-invalid') }}) }}
                     <div id="{{ form.name.vars.id }}" class="invalid-feedback">
                         {{ form_errors(form.name) }}
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <strong><label>Teams:</label></strong>
+                    {{ form_widget(form.teams, {'attr': {'class': 'form-control '  ~ (form.teams.vars.valid ? '' : 'is-invalid') }}) }}
+                    <div id="{{ form.teams.vars.id }}" class="invalid-feedback">
+                        {{ form_errors(form.teams) }}
                     </div>
                 </div>
             </div>

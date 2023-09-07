@@ -52,12 +52,16 @@ class TournamentController extends AbstractController
     {
         $form = $this->createForm(TournamentForm::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var Tournament $tournament */
-            $tournament = $form->getData();
 
-            $teams = $teamRepository->findAll();
-            foreach ($teams as $team) {
+        if ($form->isSubmitted() && $form->isValid()) {
+            $tournament = $form->getData();
+            $selectedTeams = $tournament->getTeams();
+
+            if ($selectedTeams->isEmpty()) {
+                $selectedTeams = $teamRepository->findAll();
+            }
+
+            foreach ($selectedTeams as $team) {
                 $tournament->addTeam($team);
             }
 

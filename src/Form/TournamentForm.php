@@ -2,8 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Team;
 use App\Entity\Tournament;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -31,6 +34,12 @@ class TournamentForm extends AbstractType
                     ]),
                 ],
             ])
+            ->add('teams', EntityType::class, [
+                'class' => Team::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+            ]);
         ;
     }
 
